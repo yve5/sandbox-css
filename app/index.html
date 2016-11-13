@@ -1,16 +1,90 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <meta name="description" content="Sandbox, LESS, CSS">
+    <meta Charset="utf-8">
+    <meta Name="viewport" Content="width=device-width">
+    <meta Name="description" Content="sandbox, Less, Css">
     
     <title>Sandbox · CSS</title>
 
     <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-    <div class="animation-run"></div>
-    <div class="animation-walk"></div>
+
+    <h1>Case 1 : 2 events</h1>
+    <div class="window">
+        <ul class="timeline events-3">
+            <li class="event">date<span>start</span></li>
+            <li class="today">today</li>
+            <li class="event">date<span>end</span></li>
+        </ul>
+    </div>
+
+    <h1>Case 2 : 3 events</h1>
+    <div class="window">
+        <ul class="timeline events-4">
+            <li class="event">date<span>start</span></li>
+            <li class="today">today</li>
+            <li class="event">date<span>event</span></li>
+            <li class="event">date<span>end</span></li>
+        </ul>
+    </div>
+
+    <h1>Case 3 : More than 4 events</h1>
+    <div class="window">
+        <ul class="timeline">
+            <li class="event">date<span>start</span></li>
+            <li class="event">date<span>event</span></li>
+            <li class="today">today</li>
+            <li class="event">date<span>event</span></li>
+            <li class="event">date<span>end</span></li>
+        </ul>
+    </div>
+
+
+
+    <h1>Hello World</h1>
+    <div class="window">
+        <ul class="timeline">
+            <li class="event">date<span>event</span></li>
+            <li class="today">today</li>
+            <li class="today-notification">today-notification</li>
+        </ul>
+    </div>
+
+
+
+
+
+    <div id="nav">
+        <a href="#box1">box1</a>
+        <a href="#box2">box2</a>
+        <a href="#box3">box3</a>
+        <a href="#box4">box4</a>
+        <a href="#box5">box5</a>
+    </div>
+
+    <br>
+
+    <div id="container">
+        <ul>
+            <li class="ab" id="box1">
+                <div>test1</div>
+            </li>
+            <li class="ab" id="box2">
+                <div>test2</div>
+            </li>
+            <li class="ab" id="box3">
+                <div>test3</div>
+            </li>
+            <li class="ab" id="box4">
+                <div>test4</div>
+            </li>
+            <li class="ab" id="box5">
+                <div>test5</div>
+            </li>
+        </ul>
+    </div>
+
 </body>
 </html>

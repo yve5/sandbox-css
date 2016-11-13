@@ -1,34 +1,141 @@
 body {
     font: 14px "Century Gothic", Futura, sans-serif;
     margin: 20px;
+    padding: 0;
 }
 
-div.animation {
-    &-run {
-        background: url('../doc/tuna_sprite.png') 0 0;
-        background-repeat: no-repeat;
-        height: 200px;
-        width: 400px;
+div.window {
+    width: 700px;
+    height: 250px;
+    background-color: #fff;
 
-        animation: run 800ms steps(13) infinite;
+    border: 1px solid #424242;
+    border-top-width: 32px;
 
-        @keyframes run {
-            0%      { background-position: -1200px 0; }
-            100%    { background-position: -1200px -2591px; }
+    overflow: auto;
+}
+
+
+
+
+
+@timeline-slot-width: 20%;
+
+
+ul.timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    overflow: auto;
+    height: 100%;
+
+    > li {
+        height: 100%;
+        float: left;
+        padding: 0;
+        margin: 0;
+
+        width: @timeline-slot-width;
+
+        &.event {
+            background-color: silver;
+        }
+
+        &.today {
+            background-color: yellow;
+        }
+
+        &.today-notification {
+            background-color: green;
         }
     }
 
-    &-walk {
-        background: url('../doc/tuna_sprite.png') 0 0;
-        background-repeat: no-repeat;
-        height: 200px;
-        width: 400px;
+    &.events-3 {
+        width: 100%;
 
-        animation: walk 900ms steps(12) infinite;
+        > li.event {
+            &:first-child {
+                margin-right: (100% - (3 * @timeline-slot-width)) / 2;
+            }
 
-        @keyframes walk {
-            0%      { background-position: 0px 0; }
-            100%    { background-position: 0px -2391px; }
+            &:last-child {
+                margin-left: (100% - (3 * @timeline-slot-width)) / 2;
+            }
+        }
+    }
+
+    &.events-4 {
+        width: 100%;
+
+        > li {
+            &.event, &.today {
+                margin-right: (100% - (4 * @timeline-slot-width)) / 3;
+            }
+
+            &.event:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+#nav {
+    // background-color: #FFF;
+    // position: fixed;
+    padding: 10px;
+    left: 0;
+    top: 0;
+
+    a {
+        display: inline-block;
+        margin-right: 10px;
+    }
+}
+
+@width: 500px;
+
+#container {
+    margin: 1.5em 0 0;
+    overflow: auto;
+    // width: 500%;
+    width: @width;
+    padding: 0;
+
+    ul {
+        list-style: none;
+        // width: 100%;
+        padding: 0;
+        margin: 0;
+
+        width: @width * 5;
+
+        .ab {
+            background-color: orange;
+            float: left;
+            padding: 0;
+            margin: 0;
+
+            width: @width;
+
+
+            &:nth-child(odd) {
+                background-color: lime;
+            }
+
+            div {
+                height: 500px;
+            }
         }
     }
 }
