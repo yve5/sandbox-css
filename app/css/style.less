@@ -1,141 +1,221 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+@font-family-sans-serif:    "Open Sans", Arial, sans-serif;
+@font-family-base:          @font-family-sans-serif;
+@font-size-base:            13px;
+
 body {
-    font: 14px "Century Gothic", Futura, sans-serif;
+    font-family: @font-family-base;
+    font-size: @font-size-base;
+
     margin: 20px;
     padding: 0;
 }
 
 div.window {
-    width: 700px;
     height: 250px;
+    width: 700px;
+
     background-color: #fff;
+    overflow: auto;
 
     border: 1px solid #424242;
     border-top-width: 32px;
-
-    overflow: auto;
 }
 
+.hide {
+    display: none;
+}
 
-
-
-
-@timeline-slot-width: 20%;
-
-
-ul.timeline {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-
-    overflow: auto;
+ 
+ 
+@timeline-connector-height: 40px;
+@timeline-line-color: #C0CA33;
+@timeline-filters-width: 20%;
+@timeline-line-height: 4%;
+@timeline-slot-width: 18%;
+ 
+ 
+.slot-margin-generator(@slot-total) {
+    &:first-child:nth-last-child(@{slot-total}),
+    &:first-child:nth-last-child(@{slot-total}) ~ li {
+        margin-right: (100 - (@timeline-slot-width * @slot-total)) / (@slot-total - 1);
+        background-color: transparent;
+ 
+        &:last-child {
+           margin: 0;
+        }
+    }
+}
+ 
+ 
+div.timeline-container {
     height: 100%;
-
-    > li {
-        height: 100%;
-        float: left;
-        padding: 0;
+    position: relative;
+ 
+    > hr {
+        position: absolute;
+        z-index: 0;
+        width: 99%;
+        top: 48%;
+ 
+        background-color: @timeline-line-color;
+        border: none;
         margin: 0;
-
-        width: @timeline-slot-width;
-
-        &.event {
-            background-color: silver;
-        }
-
-        &.today {
-            background-color: yellow;
-        }
-
-        &.today-notification {
-            background-color: green;
-        }
-    }
-
-    &.events-3 {
+ 
+        height: @timeline-line-height;
         width: 100%;
-
-        > li.event {
-            &:first-child {
-                margin-right: (100% - (3 * @timeline-slot-width)) / 2;
-            }
-
-            &:last-child {
-                margin-left: (100% - (3 * @timeline-slot-width)) / 2;
-            }
-        }
     }
-
-    &.events-4 {
-        width: 100%;
-
-        > li {
-            &.event, &.today {
-                margin-right: (100% - (4 * @timeline-slot-width)) / 3;
-            }
-
-            &.event:last-child {
-                margin-right: 0;
-            }
-        }
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-#nav {
-    // background-color: #FFF;
-    // position: fixed;
-    padding: 10px;
-    left: 0;
-    top: 0;
-
-    a {
-        display: inline-block;
-        margin-right: 10px;
-    }
-}
-
-@width: 500px;
-
-#container {
-    margin: 1.5em 0 0;
-    overflow: auto;
-    // width: 500%;
-    width: @width;
-    padding: 0;
-
-    ul {
+ 
+    ul.filters {
+        position: relative;
+        z-index: 1;
+ 
+        background-color: white;
         list-style: none;
-        // width: 100%;
+        float: left;
+ 
+        width: @timeline-filters-width;
+        height: 100%;
+ 
         padding: 0;
         margin: 0;
-
-        width: @width * 5;
-
-        .ab {
-            background-color: orange;
-            float: left;
+    }
+ 
+    ul.timeline {
+        position: relative;
+        z-index: 1;
+        
+        white-space: nowrap;
+        list-style: none;
+        font-size: 0; // important to remove weird empty spaces between li tags
+ 
+        padding: 0;
+        margin: 0;
+ 
+        overflow: auto;
+        height: 100%;
+ 
+        > li {
+            display: inline-block;
             padding: 0;
             margin: 0;
-
-            width: @width;
-
-
-            &:nth-child(odd) {
-                background-color: lime;
+ 
+            background-color: white;
+            width: @timeline-slot-width;
+            height: 100%;
+ 
+            font-family: @font-family-base;
+            font-size: @font-size-base;
+ 
+            .slot-margin-generator(3);
+            .slot-margin-generator(4);
+            .slot-margin-generator(5);
+ 
+            hr {
+                background-color: @timeline-line-color;
+                height: @timeline-line-height;
+                border: none;
+                width: 100%;
+                margin: 0;
             }
-
-            div {
-                height: 500px;
+ 
+            @timeline-time-margin: 10px;
+ 
+            > div {
+                height: (100% - @timeline-line-height) / 2;
+                width: 100%;
+ 
+                position: relative;
+                float: left;
+ 
+                white-space: normal;
+                text-align: center;
+                overflow: hidden;
+ 
+                time, span.connector, data {
+                    position: absolute;
+                    display: block;
+                }
+ 
+                data {
+                    
+                }
             }
+ 
+            &.event {
+                > div {
+                    time {
+                        font-weight: bold;
+                        bottom: 10px;
+                        width: 100%;
+                    }
+ 
+                    span.connector {
+                        border-right: 2px solid @timeline-line-color;
+                        height: @timeline-connector-height;
+                        width: 50%;
+                        bottom: 0;
+                    }
+ 
+                    data {
+                        background-color: #BBDEFB;
+                        border: 1px solid #1976D2;
+                        color: #1976D2;
+ 
+                        overflow: hidden;
+                        max-height: 40%;
+                        margin: 0 4px;
+                        width: 90%;
+                        
+                        bottom: @timeline-connector-height;
+                    }
+ 
+                    &:last-child {
+                        time {
+                            bottom: initial;
+                            top: 10px;
+                        }
+ 
+                        span.connector {
+                            bottom: initial;
+                            top: 0;
+                        }
+ 
+                        data {
+                            bottom: initial;
+                            top: @timeline-connector-height;
+                        }
+                    }
+                }
+            }
+ 
+            &.today {
+                > div {
+                    data, time {
+                        font-weight: bold;
+                        overflow: hidden;
+                        color: #E65100;
+ 
+                        max-height: 40%;
+                        bottom: 10px;
+                        width: 100%;
+                    }
+ 
+                    &:last-child {
+                        data, time {
+                            bottom: initial;
+                            top: 10px;
+                        }
+                    }
+                }
+            }
+ 
+ 
+            // &.today-notification {
+            //     background-color: green;
+            // }
+ 
         }
     }
 }

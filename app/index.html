@@ -4,87 +4,381 @@
     <meta Charset="utf-8">
     <meta Name="viewport" Content="width=device-width">
     <meta Name="description" Content="sandbox, Less, Css">
-    
-    <title>Sandbox · CSS</title>
-
+ 
+    <title>Timeline</title>
+ 
     <link rel="stylesheet" href="css/style.css"/>
 </head>
+ 
 <body>
+ 
+    <h1>Timeline</h1>
 
-    <h1>Case 1 : 2 events</h1>
-    <div class="window">
-        <ul class="timeline events-3">
-            <li class="event">date<span>start</span></li>
-            <li class="today">today</li>
-            <li class="event">date<span>end</span></li>
-        </ul>
-    </div>
+    <div data-bind="foreach: data">
+        <h2 data-bind="text: title"></h2>
 
-    <h1>Case 2 : 3 events</h1>
-    <div class="window">
-        <ul class="timeline events-4">
-            <li class="event">date<span>start</span></li>
-            <li class="today">today</li>
-            <li class="event">date<span>event</span></li>
-            <li class="event">date<span>end</span></li>
-        </ul>
-    </div>
-
-    <h1>Case 3 : More than 4 events</h1>
-    <div class="window">
-        <ul class="timeline">
-            <li class="event">date<span>start</span></li>
-            <li class="event">date<span>event</span></li>
-            <li class="today">today</li>
-            <li class="event">date<span>event</span></li>
-            <li class="event">date<span>end</span></li>
-        </ul>
-    </div>
-
-
-
-    <h1>Hello World</h1>
-    <div class="window">
-        <ul class="timeline">
-            <li class="event">date<span>event</span></li>
-            <li class="today">today</li>
-            <li class="today-notification">today-notification</li>
-        </ul>
-    </div>
-
-
-
-
-
-    <div id="nav">
-        <a href="#box1">box1</a>
-        <a href="#box2">box2</a>
-        <a href="#box3">box3</a>
-        <a href="#box4">box4</a>
-        <a href="#box5">box5</a>
+        <div class="window hidea">
+            <div class="timeline-container">
+                <hr>
+     
+                <ul class="filters" data-bind="css: { 'hide' : hideFilter }, foreach: filters">
+                    <li data-bind="text: name"></li>
+                </ul>
+     
+                <ul class="timeline" data-bind="foreach: slots">
+                    <li class="event">
+                        <div>
+                            <!-- ko if: part1Type  -->
+                            <data data-bind="text: part1">Redemption issue</data>
+                            <span class="connector"></span>
+                            <!-- /ko -->
+                        </div>
+                        <hr>
+                        <div>
+                            <time data-bind="text: part2">30 SEPT 2016</time>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <br>
-
-    <div id="container">
-        <ul>
-            <li class="ab" id="box1">
-                <div>test1</div>
-            </li>
-            <li class="ab" id="box2">
-                <div>test2</div>
-            </li>
-            <li class="ab" id="box3">
-                <div>test3</div>
-            </li>
-            <li class="ab" id="box4">
-                <div>test4</div>
-            </li>
-            <li class="ab" id="box5">
-                <div>test5</div>
-            </li>
-        </ul>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+ 
+    <h2>Case 1 : 2 events</h2>
+    <div class="window hidea">
+        <div class="timeline-container">
+            <hr>
+ 
+            <ul class="filters hide">
+                <li>Key Strategy Info</li>
+                <li>Coupon Payment (5)</li>
+                <li>Barriers (3)</li>
+                <li>Salec Debit (2)</li>
+                <li>Filter By Date</li>
+            </ul>
+ 
+            <ul class="timeline">
+                <li class="event">
+                    <div>
+                        <data>Lorem ipsum dolor sit amet, consectetur adipisicing elit</data>
+                        <span class="connector"></span>
+                    </div>
+                    <hr>
+                    <div>
+                        <time>23 MAR 2016</time>
+                    </div>
+                </li>
+                <li class="today">
+                    <div>
+                        <time>30 MAR 2016</time>
+                    </div>
+                    <hr>
+                    <div>
+                        <data>Today</data>
+                    </div>
+                </li>
+                <li class="event">
+                    <div>
+                        <data>Redemption issue</data>
+                        <span class="connector"></span>
+                    </div>
+                    <hr>
+                    <div>
+                        <time>30 SEPT 2016</time>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
-
+ 
+    <h2>Case 2 : 2 events with filters</h2>
+    <div class="window hidea">
+        <div class="timeline-container">
+            <hr>
+ 
+            <ul class="filters">
+                <li>Key Strategy Info</li>
+                <li>Coupon Payment (5)</li>
+                <li>Barriers (3)</li>
+                <li>Salec Debit (2)</li>
+                <li>Filter By Date</li>
+            </ul>
+ 
+            <ul class="timeline">
+                <li class="event">
+                    <div>
+                        <data>Lorem ipsum dolor sit amet, consectetur adipisicing elit</data>
+                        <span class="connector"></span>
+                    </div>
+                    <hr>
+                    <div>
+                        <time>23 MAR 2016</time>
+                    </div>
+                </li>
+                <li class="today">
+                    <div>
+                        <time>30 MAR 2016</time>
+                    </div>
+                    <hr>
+                    <div>
+                        <data>Today</data>
+                    </div>
+                </li>
+                <li class="event">
+                    <div>
+                        <data>Redemption issue</data>
+                        <span class="connector"></span>
+                    </div>
+                    <hr>
+                    <div>
+                        <time>30 SEPT 2016</time>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+ 
+    <h2>Case 3 : 3 events</h2>
+    <div class="window hidea">
+        <div class="timeline-container">
+            <hr>
+ 
+            <ul class="filters hide">
+                <li>Key Strategy Info</li>
+                <li>Coupon Payment (5)</li>
+                <li>Barriers (3)</li>
+                <li>Salec Debit (2)</li>
+                <li>Filter By Date</li>
+            </ul>
+ 
+            <ul class="timeline">
+                <li class="event">
+                    <div>
+                        <data>Issue</data>
+                        <span class="connector"></span>
+                    </div>
+                    <hr>
+                    <div>
+                        <time>23 MAR 2016</time>
+                    </div>
+                </li>
+                <li class="today">
+                    <div>
+                        <data>Today</data>
+                        <span class="connector"></span>
+                    </div>
+                    <hr>
+                    <div>
+                        <time>24 MAR 2016</time>
+                    </div>
+                </li>
+                <li class="event">
+                    <div>
+                        <time>15 JUL 2016</time>
+                    </div>
+                    <hr>
+                    <div>
+                        <span class="connector"></span>
+                        <data>Event</data>
+                    </div>
+                </li>
+                <li class="event">
+                    <div>
+                        <data>Redemption Issue</data>
+                        <span class="connector"></span>
+                    </div>
+                    <hr>
+                    <div>
+                        <time>30 SEPT 2016</time>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+ 
+    <h2>Case 4 : 4 events</h2>
+    <div class="window hidea">
+        <div class="timeline-container">
+            <hr>
+ 
+            <ul class="filters hide">
+                <li>Key Strategy Info</li>
+                <li>Coupon Payment (5)</li>
+                <li>Barriers (3)</li>
+                <li>Salec Debit (2)</li>
+                <li>Filter By Date</li>
+            </ul>
+ 
+            <ul class="timeline">
+                <li class="event">
+                    <div>
+                        <data>Issue</data>
+                        <span class="connector"></span>
+                    </div>
+                    <hr>
+                    <div>
+                        <time>23 MAR 2016</time>
+                    </div>
+                </li>
+                <li class="event">
+                    <div>
+                        <time>15 MAY 2016</time>
+                    </div>
+                    <hr>
+                    <div>
+                        <span class="connector"></span>
+                        <data>Event</data>
+                    </div>
+                </li>
+                <li class="today">
+                    <div>
+                        <data>Today</data>
+                    </div>
+                    <hr>
+                    <div>
+                        <time>1 JUL 2016</time>
+                    </div>
+                </li>
+                <li class="event">
+                    <div>
+                        <time>15 JUL 2016</time>
+                    </div>
+                    <hr>
+                    <div>
+                        <span class="connector"></span>
+                        <data>Event</data>
+                    </div>
+               </li>
+                <li class="event">
+                    <div>
+                        <data>Redemption</data>
+                        <span class="connector"></span>
+                    </div>
+                    <hr>
+                    <div>
+                        <time>30 SEPT 2016</time>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+ 
+    <h2>Case 5 : More than 4 events</h2>
+    <div class="window">
+        <div class="timeline-container">
+            <hr>
+            
+            <ul class="filters hide">
+                <li>Key Strategy Info</li>
+                <li>Coupon Payment (5)</li>
+                <li>Barriers (3)</li>
+                <li>Salec Debit (2)</li>
+               <li>Filter By Date</li>
+            </ul>
+ 
+            <ul class="timeline">
+                <li class="event">
+                    <div>
+                        <data>Issue</data>
+                        <span class="connector"></span>
+                    </div>
+                    <hr>
+                    <div>
+                        <time>23 MAR 2016</time>
+                    </div>
+                </li>
+                <li class="event">
+                    <div>
+                        <time>10 APR 2016</time>
+                    </div>
+                    <hr>
+                    <div>
+                        <span class="connector"></span>
+                        <data>Event</data>
+                    </div>
+                </li>
+                <li class="event">
+                    <div>
+                        <data>Event</data>
+                        <span class="connector"></span>
+                    </div>
+                    <hr>
+                    <div>
+                        <time>15 MAY 2016</time>
+                    </div>
+                </li>
+                <li class="event">
+                    <div>
+                        <time>05 JUN 2016</time>
+                    </div>
+                    <hr>
+                    <div>
+                        <span class="connector"></span>
+                        <data>Event</data>
+                    </div>
+                </li>
+                <li class="today">
+                    <div>
+                        <data>Today</data>
+                    </div>
+                    <hr>
+                    <div>
+                        <time>1 JUL 2016</time>
+                    </div>
+                </li>
+                <li class="event">
+                    <div>
+                        <time>15 JUL 2016</time>
+                    </div>
+                    <hr>
+                    <div>
+                        <span class="connector"></span>
+                        <data>Event</data>
+                    </div>
+               </li>
+                <li class="event">
+                    <div>
+                        <data>Event</data>
+                        <span class="connector"></span>
+                    </div>
+                    <hr>
+                    <div>
+                        <time>15 AUG 2016</time>
+                    </div>
+                </li>
+                <li class="event">
+                    <div>
+                        <time>19 SEPT 2016</time>
+                    </div>
+                    <hr>
+                    <div>
+                        <span class="connector"></span>
+                        <data>Event</data>
+                    </div>
+                </li>
+                <li class="event">
+                    <div>
+                        <data>Redemption</data>
+                        <span class="connector"></span>
+                    </div>
+                    <hr>
+                    <div>
+                        <time>30 SEPT 2016</time>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+ 
+    <script src="js/knockout.js"></script>
+    <script src="js/main.js"></script>
+ 
 </body>
 </html>
